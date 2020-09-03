@@ -1,0 +1,20 @@
+<div class="container-fluid"> 
+  <div class="row bg-dark justify-content-center 
+          align-items-center" style="height:100px"> 
+      <div class="col-5"></div> 
+      <div class="col-6 text-white h2"> 
+         Favoris
+      </div> 
+  </div>
+</div> 
+
+<!-- Affichage des favoris dans la page des favoris-->
+<ul>
+  <li *ngFor="let favourite of favourites">
+    {{favourite.title}}
+    <button (click)="Remove(favourite.id)"  
+      class="btn btn-light text-danger"> 
+          Remove from Fav
+    </button> 
+  </li>
+</ul>

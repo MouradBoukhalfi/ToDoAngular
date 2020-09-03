@@ -1,0 +1,69 @@
+<div class="container-fluid"> 
+    <div class="row bg-dark justify-content-center 
+            align-items-center" style="height:100px"> 
+        <div class="col-5"></div> 
+        <div class="col-7 text-white h2"> 
+           Home Page
+        </div> 
+    </div>
+    
+    <!--Bloc s'occupant des inputs -->
+    <div class="row mt-1" style="height:80px;"> 
+      <div class="col-3 d-none col-md-3 d-md-block"></div> 
+        <div class="col-12 col-md-6 bg-dark d-flex  
+        justify-content-center align-items-center  
+        text-light h3"> 
+            <input [(ngModel)]="newFilmTitle" type="text" 
+                    value="" class="col-7 form-control"
+                        style="width:300px;"> 
+  
+            <div class="col-1"></div> 
+  
+            <button (click)="addToList()"  
+            class="btn btn-light text-success"> 
+                Add
+            </button> 
+        </div> 
+        <div class="col-3 d-none col-md-3 d-md-block"></div> 
+    </div> 
+  
+    <!--Bloc s'occupant de la liste des films avec la fonction delete, addFav et le modal-->
+    <div *ngFor="let film of films" 
+            class="row mt-1" style="height:100px;"> 
+  
+        <div class="col-3 d-none col-md-3 d-md-block"></div> 
+  
+        <div class="col-18 col-md-6 bg-dark d-flex 
+                    justify-content-center align-items-center 
+                    text-light h3">             
+            <div class="col-8 text-light h3"(click)="staticModal.show()" style="cursor: pointer;">{{film.title}}</div>
+            <div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+                tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                    <h4 class="text-dark">Informations</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="staticModal.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                    <div class="modal-body">
+                        <div class = "text-dark">
+                            Titre : {{film.title}}
+                            <br>Année: {{film.year}}
+                            <br>Catégorie: {{film.type}}
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+              <input (click)="deleteTask(film.id)" type="button"
+                value="Delete" class="col-2 btn btn-danger"> 
+            <input (click)="addToFavourites(film)" type = "button"
+                value="Add to Fav" class = "col-2 btn btn-success">
+          </div>    
+        <div class="col-3 d-none col-md-3 d-md-block"></div> 
+    </div> 
+</div>
+  
+
