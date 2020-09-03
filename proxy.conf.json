@@ -1,5 +1,5 @@
 {
-  "/restapi": {
+  "/restapi/*": {
   "target": "http://localhost:8080/restapi/webresources/myresource",
   "secure": false,
   "logLevel": "debug"

@@ -7,9 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { FavComponent } from './fav/fav.component';
 import {AppRoutingModule} from './app-routing.module';
 import { SharedService } from './shared.service';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { DataComponent } from './data/data.component';
 
 
 @NgModule({
@@ -17,13 +16,12 @@ import { DataComponent } from './data/data.component';
     AppComponent,
     HomeComponent,
     FavComponent,
-    DataComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule,
+    HttpClientModule,
     ModalModule.forRoot(),
   ],
   providers: [SharedService],

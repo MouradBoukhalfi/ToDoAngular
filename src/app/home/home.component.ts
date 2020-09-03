@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { Film } from '../film';
 import  Data   from '../../assets/data.json';
+import {HttpClient} from '@angular/common/http';
+import 'rxjs/add/operator/toPromise';
 
 @Component({ 
     selector: 'app-home', 
@@ -13,10 +15,13 @@ export class HomeComponent implements OnInit {
     public films: Film[] = [];
     public newFilmTitle: string;
 
-    constructor(private sharedService: SharedService) { }
+    constructor(private sharedService: SharedService,private http: HttpClient) { }
 
     ngOnInit(){
         this.films = this.sharedService.getFilms();
+        this.http.get('http://localhost:8080/restapi/webresources/myresource').toPromise().then(data=>{
+        console.log(data);  
+    });
     }
      /* Ajout des élèments en entrée dans la liste avec vérification que l'élément est contenu dans la base de données*/
     public addToList() {
